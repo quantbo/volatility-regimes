@@ -17,7 +17,7 @@ frame.setAttribute('x', 0);
 frame.setAttribute('y', 0);
 frame.setAttribute('width', vbWidth);
 frame.setAttribute('height', vbHeight);
-frame.style.fill = 'aqua';
+frame.setAttribute('id', 'frame');
 inner.appendChild(frame);
 
 //To find the max of the data we must filter out null values.
