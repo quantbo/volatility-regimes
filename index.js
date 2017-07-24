@@ -1,8 +1,12 @@
 //The present code assumes that 'initialize.js' has been loaded.
 'use strict';
 
+//Generate a curve, and shading below the curve.
+//It is necessary to generate the shading first. This way we avoid overwriting with shading the section of the stroke falling below the theoretical curve.
+
 let points = '';
-const step = 1; //This can be used to diagnose issues.
+//In production set step = 1. During development increasing step can help to diagnose issues.
+const step = 1;
 for (let ii = 0; ii < vbWidth; ii = ii+step) {
   //Skip if null.
   if (value[ii] == null) continue;
@@ -15,13 +19,19 @@ for (let ii = 0; ii < vbWidth; ii = ii+step) {
     points = points + ', '
   }
 }
-let polyline = document.createElementNS(namespaceURI, 'polyline');
-polyline.setAttribute('points', points);
-inner.appendChild(polyline);
 
-//Add shading under the curve.
+//Generate shading.
 //Add to 'points' the lower right and lower left corners.
-points = points + ', ' + vbWidth + ' ' + vbHeight + ', 0 ' + vbHeight;
+let corners = ', ' + vbWidth + ' ' + vbHeight + ', 0 ' + vbHeight;
+points = points + corners;
 let shading = document.createElementNS(namespaceURI, 'polygon');
 shading.setAttribute('points', points);
 inner.appendChild(shading);
+//Remove corners.
+let index = points.search(corners + '$');
+points = points.substring(0, index);
+
+//Generate curve.
+let polyline = document.createElementNS(namespaceURI, 'polyline');
+polyline.setAttribute('points', points);
+inner.appendChild(polyline);
