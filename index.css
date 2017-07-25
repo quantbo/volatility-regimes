@@ -85,6 +85,13 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/::before
 .exec-summ:before, .exec-summ::before {
 	content: 'SUMMARY: ';
 }
+/* The title of an SVG graph, generated within the outer SVG element. */
+.graph-title {
+  alignment-baseline: middle;
+  font-family: Roboto;
+  font-size: 1.6em;
+  text-anchor: middle;  
+}
 /*A mathematical expression.*/
 .math {
 	background-color: rgba(0, 0, 128, 0.01);

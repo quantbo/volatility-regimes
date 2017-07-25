@@ -5,13 +5,6 @@ polygon {
   fill: rgb(150, 200, 240);
   stroke: none;
 }
-/* The title of an SVG graph. */
-.graph-title {
-  alignment-baseline: middle;
-  font-family: Roboto;
-  font-size: 1.6em;
-  text-anchor: middle;  
-}
 .gridLine {
   stroke: gray;
   /*stroke-dasharray should eventually be set programmatically to coordinate with the height of the viewBox.*/
