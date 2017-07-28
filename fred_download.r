@@ -1,16 +1,11 @@
 comment("
 fred_download.r:
 Download the FRED data file with the indicated Series ID and transform it to a data frame.
-Optionally save the data frame to disk.
-Return the data frame.
-
-To run from the command line:
-Rscript fred_download.r series_id
+Save the data frame to disk and return it.
 ")
 
-fred_download = function(series_id, save=TRUE) {
+fred_download = function(series_id) {
   #series_id: A FRED series ID. Example: A939RX0Q048SBEA (Real gross domestic product per capita).
-  #save: If TRUE, save the data to disk as a CSV file. The file is named 'series_id.csv'.
 
   #URL template. Replace XXX with series_id.
   urlx = 'https://fred.stlouisfed.org/data/XXX.txt'
@@ -37,19 +32,9 @@ fred_download = function(series_id, save=TRUE) {
 	dfr$DATE = as.Date(dfr$DATE)
 
 	#Save to disk.
-	if (save) {
-		file = paste(series_id, '.csv', sep='')
-		write.csv(dfr, file=file, row.names=FALSE)		
-	}
+	file = paste(series_id, '.csv', sep='')
+	write.csv(dfr, file=file, row.names=FALSE)		
 
 	#Return the data frame.
 	return(invisible(dfr))
-}
-
-#If run from the command line user must provide the Series ID as argument.
-#Example command line invocation: Rscript fred_download.r DEXUSEU
-if (!interactive()) {
-	series_id = commandArgs(trailingOnly=TRUE)
-	stopifnot(length(series_id) == 1)
-	fred_download(series_id)
 }

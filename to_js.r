@@ -1,7 +1,7 @@
 comment("
 to_js.r:
-Convert a data frame to a Javascript object containing a set of parallel arrays and store in the indicated file.
-Assuming the data frame has M rows and N columns, the file will contain a script of the following form:
+Convert a CSV file to a Javascript object containing a set of parallel arrays and store in the indicated file.
+Assuming the data have M rows and N columns, the file will contain a script of the following form:
 
 let DATA = {
 	'header1': [data1_1',..., 'data1_M'],
@@ -10,15 +10,8 @@ let DATA = {
 	'headerN': [dataN_1,..., dataN_M]
 };
 
-This is the best way to map an R data frame to an object in Javascript.
 
-This script can be read by another script thus allowing the data to be conveniently loaded.
-If appropriate the DATA array can be re-named as follows within Javascript:
-
-let newName = DATA;
-DATA = null;
-
-As of this writing I assume that the data are of type Date or numeric (integer or double). The intended application is to time series, so this should be sufficient.
+The intended application is to time series; consequently, it is assumed that the data are of type Date or numeric (integer or double).
 
 Coding note:
 The program below involves loops, which means it would probably run much faster in a language like C++. However, on my laptop (MEII) it processes a CSV file with about 9500 records in well under a second. The following is a microbenchmark report:
@@ -27,12 +20,14 @@ Unit: milliseconds
              expr       min         lq       mean     median         uq        max neval
  to_js(dfr, file) 617.99573 623.144181 625.929333 624.397926 629.332679 634.776149     5
 
-If CSV files with millions of records must be converted, this program should be rewritten in C++. However, I do not believe a browser can handle so much data, so this possibility is not likely to be encountered in the forseeable future.
+If CSV files with millions of records must be converted, this program should be rewritten in C++. However, I do not believe a browser can handle so much data, so this possibility is not likely to be encountered in the near to medium term future.
 ")
 
-to_js = function(dfr, file) {
-	#dfr: A data frame. As noted above, columns must be Date, integer, or double.
-	#file: The name of the file to write to. Only the base file name should supplied; the extension '.js' is added by the program.
+to_js = function(basename) {
+	#basename: The base name (omitting extension) of the input and output files.
+
+	csv_file = paste(basename, '.csv', sep='')
+	dfr = read.csv(csv_file)
 
 	#Put quotes around the members of a vector.
 	quotes = function(vec) {
@@ -60,10 +55,10 @@ to_js = function(dfr, file) {
 
 	NN = length(nmz) #Number of columns.
 	RR = nrow(dfr) #Number of rows.
-	file = paste(file, '.js', sep='')
-	sink(file)
+	js_file = paste(basename, '.js', sep='')
+	sink(js_file)
 	on.exit(sink())
-	cat('let DATA = {\n')
+	cat('DATA = {\n')
 	for (ii in 1:NN) {
 		cat('\t', nmz[ii], ': [\n', sep='')
 		for (jj in 1:RR) {

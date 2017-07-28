@@ -1,11 +1,10 @@
 //Add a vertical grid.
 'use strict';
-const vGran = 10; //Control granularity of vertical grid.
-const vLocs = [0]; //Locations of vertical grid lines.
-const vVals = [max]; //Values corresponding to vertical tick marks.
+var vLocs = [0]; //Locations of vertical grid lines.
+var vVals = [max]; //Values corresponding to vertical tick marks.
 for (let ii = 1; ii <= vGran; ++ii) {
   vLocs.push(ii * vbHeight / vGran);
-  let val = (vGran - ii) * max / vGran;
+  let val = max - ii * (vx / vGran);
   vVals.push(Math.round(10 * val) / 10); //Round to 1 decimal place.
 }
 //Add a vertical grid line, tick mark, and label.
@@ -31,7 +30,6 @@ function vGrid(ii) {
   let x = -0.03 * vbWidth;
   text.setAttribute('x', x);
   text.setAttribute('class', 'tick-text');
-//  text.setAttribute('transform', `rotate(-45, ${loc}, ${vbHeight * vbh_factor})`)
   text.textContent = vVals[ii];
   inner.appendChild(text);
 }

@@ -43,6 +43,9 @@ h1 {
 	padding: 0.25em;
 	text-align: center;
 }
+html {
+	margin-bottom: 0.5em;
+}
 ol, ul {
 	font-size: 1.2em;
 }

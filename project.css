@@ -1,9 +1,22 @@
-polyline {
+.curve {
   stroke: red;
 }
-polygon {
-  fill: rgb(150, 200, 240);
+.shading {
+  fill: rgba(150, 200, 240, 0.75);
   stroke: none;
+}
+/*A chart is composed of outer and inner SVG elements.
+We provide the inner SVG with a viewBox whose width equals the length of the data.*/
+.outer {
+  background-color: rgba(233, 233, 233, 0.5);
+  margin-top: 1em;
+}
+.inner {
+  /*Allows tick marks and labels to lie outside the inner SVG.*/
+  overflow: visible;
+  stroke: black;
+  stroke-width: 10;
+  fill: none;
 }
 .gridLine {
   stroke: gray;
@@ -22,14 +35,4 @@ polygon {
 #frame {
   fill: aqua;
   fill-opacity: 0.5;
-}
-#inner {
-  overflow: visible;
-  stroke: black;
-  stroke-width: 10;
-  fill: none;
-}
-#outer {
-  background-color: rgba(233, 233, 233, 0.5);
-  margin-top: 1em;
 }

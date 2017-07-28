@@ -3,15 +3,14 @@
 
 //Set horizontal grid locations.
 //It improves clarity for the observer if there is a tick mark and tick label at the beginning and end of the time series.
-let hLocs = [0];
-const hGran = 16; //Granularity of horizontal grid.
-const hStep = (vbWidth - 1) / hGran;
+var hLocs = [0];
+var hStep = (vbWidth - 1) / hGran;
 for (let ii = 1; ii <= hGran; ++ii) {
   hLocs.push(Math.round(ii * hStep));
 }
 
 function hGrid(ii) {
-  //ii: Index of governing for-loop.
+  //ii: Index governing for-loop.
   let loc = hLocs[ii];
   let tick = document.createElementNS(namespaceURI, 'line');
   tick.setAttribute('x1', loc);
