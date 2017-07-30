@@ -102,6 +102,28 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/::before
 	padding-top: 0.75em;
 	text-indent: 3em;
 }
+/* ===== LAYOUT =====
+A chart is composed of outer and inner SVG elements.
+In a separate Javascript file the inner SVG is provided a viewBox whose width equals the length of the data. This is very convenient computationally.
+A rectangle with class frame provides a background and border for the inner SVG.
+*/
+.outer {
+  background-color: rgba(235, 235, 235, 0.5);
+  margin-top: 1em;
+}
+.inner {
+  /*Allows tick marks and tick mark labels to lie outside the inner SVG.*/
+  overflow: visible;
+  stroke: black;
+  fill: none;
+}
+.frame {
+  fill: rgb(200, 240, 255);
+}
+.tick-label {
+  font-family: 'Source Sans Pro', sans-serif;
+  text-anchor: end;
+}
 /*Place a notice of the publication date after h1 and before the introductory paragraph.*/
 /*Place a copyright notice at the bottom of the page.*/
 #copyright, #pub {

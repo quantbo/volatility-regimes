@@ -29,7 +29,7 @@ function vGrid(ii) {
   text.setAttribute('y', loc);
   let x = -0.03 * vbWidth;
   text.setAttribute('x', x);
-  text.setAttribute('class', 'tick-text');
+  text.setAttribute('class', 'tick-label');
   text.textContent = vVals[ii];
   inner.appendChild(text);
 }

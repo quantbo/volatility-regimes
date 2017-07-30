@@ -2,37 +2,11 @@
   stroke: red;
 }
 .shading {
-  fill: rgba(150, 200, 240, 0.75);
+  fill: rgb(150, 220, 240);
   stroke: none;
-}
-/*A chart is composed of outer and inner SVG elements.
-We provide the inner SVG with a viewBox whose width equals the length of the data.*/
-.outer {
-  background-color: rgba(233, 233, 233, 0.5);
-  margin-top: 1em;
-}
-.inner {
-  /*Allows tick marks and labels to lie outside the inner SVG.*/
-  overflow: visible;
-  stroke: black;
-  stroke-width: 10;
-  fill: none;
 }
 .gridLine {
   stroke: gray;
   /*stroke-dasharray should eventually be set programmatically to coordinate with the height of the viewBox.*/
   stroke-dasharray: 10 16;
-}
-.tick {
-  stroke-width: 5;
-}
-.tick-text {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 100;
-  font-size: 100pt;
-  text-anchor: end;
-}
-#frame {
-  fill: aqua;
-  fill-opacity: 0.5;
 }

@@ -30,7 +30,7 @@ function hGrid(ii) {
   text.setAttribute('x', loc);
   const vbh_factor = 1.05;
   text.setAttribute('y', vbHeight * vbh_factor);
-  text.setAttribute('class', 'tick-text');
+  text.setAttribute('class', 'tick-label');
   text.setAttribute('transform', `rotate(-45, ${loc}, ${vbHeight * vbh_factor})`)
   text.textContent = date[loc];
   inner.appendChild(text);
