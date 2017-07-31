@@ -102,6 +102,7 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/::before
 	padding-top: 0.75em;
 	text-indent: 3em;
 }
+
 /* ===== LAYOUT =====
 A chart is composed of outer and inner SVG elements.
 In a separate Javascript file the inner SVG is provided a viewBox whose width equals the length of the data. This is very convenient computationally.
@@ -120,6 +121,31 @@ A rectangle with class frame provides a background and border for the inner SVG.
 .frame {
   fill: rgb(200, 240, 255);
 }
+
+/* ===== HOME =====
+The following condition a div that takes the user to the home page.*/
+.home {
+  color: white;
+  background-color: #999;
+  border: none;
+  border-radius: 6px;
+  font-family: sans-serif;
+  font-size: 1.1em;
+  left: -2%;
+  padding: 0.3em;
+  padding-bottom: 0.2em;
+  padding-top: 0.1em;
+  position: fixed;
+  top: 50%;
+  transform: rotate(-90deg)
+}
+.home a {
+  color: white;
+}
+.home a:hover {
+  color: rgb(0, 0, 100);
+}
+
 .tick-label {
   font-family: 'Source Sans Pro', sans-serif;
   text-anchor: end;
