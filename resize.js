@@ -39,7 +39,8 @@ var vbPixels = vbWidth / inner.getAttribute('width');
 
 //Set font size of tick mark labels.
 var tickLabel = inner.getElementsByClassName('tick-label');
-for (let ii = 0; ii < tickLabel.length; ++ii) tickLabel[ii].style['font-size'] = 11 * vbPixels;
+//Firefox does not set the font-size unless the suffix 'px' is applied. Chrome works with or without 'px'.
+for (let ii = 0; ii < tickLabel.length; ++ii) tickLabel[ii].style['font-size'] = parseInt(11 * vbPixels) + 'px';
 
 //Set stroke-width for inner. Then override for tick marks and curve.
 inner.style['stroke-width'] = 0.0018 * vbHeight;

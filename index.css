@@ -102,6 +102,10 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/::before
 	padding-top: 0.75em;
 	text-indent: 3em;
 }
+.tick-label {
+  font-family: 'Source Sans Pro', sans-serif;
+  text-anchor: end;
+}
 
 /* ===== LAYOUT =====
 A chart is composed of outer and inner SVG elements.
@@ -146,10 +150,6 @@ The following condition a div that takes the user to the home page.*/
   color: rgb(0, 0, 100);
 }
 
-.tick-label {
-  font-family: 'Source Sans Pro', sans-serif;
-  text-anchor: end;
-}
 /*Place a notice of the publication date after h1 and before the introductory paragraph.*/
 /*Place a copyright notice at the bottom of the page.*/
 #copyright, #pub {
