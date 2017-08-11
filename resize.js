@@ -43,14 +43,13 @@ var tickLabel = inner.getElementsByClassName('tick-label');
 for (let ii = 0; ii < tickLabel.length; ++ii) tickLabel[ii].style['font-size'] = parseInt(11 * vbPixels) + 'px';
 
 //Set stroke-width for inner. Then override for tick marks and curve.
-inner.style['stroke-width'] = 0.0018 * vbHeight;
+inner.style['stroke-width'] = 0.0018 * vbHeight + 'px';
 //Set stroke-width for tick marks.
 var tick = inner.getElementsByClassName('tick');
-for (let ii=0; ii < tick.length; ++ii) tick[ii].style['stroke-width'] = 0.0014 * vbHeight;
+for (let ii=0; ii < tick.length; ++ii) tick[ii].style['stroke-width'] = 0.0014 * vbHeight + 'px';
 //Set stroke-width of curve.
 if (tseries == 'VALUE') {
-  curve.style['stroke-width'] = 0.0026 * vbHeight;
+  curve.style['stroke-width'] = 0.0026 * vbHeight + 'px';
 } else {
-  curve.style['stroke-width'] = 0.0020 * vbHeight;
-
+  curve.style['stroke-width'] = 0.0020 * vbHeight + 'px';
 }
